@@ -279,11 +279,27 @@ class DashboardManager {
             'notifications-section': 'Notifications'
         };
         
+        const pageSubtitles = {
+            'dashboard-overview': "Voici l'activité de votre école aujourd'hui.",
+            'students-section': 'Recherchez, ajoutez et gérez vos étudiants.',
+            'teachers-section': 'Recherchez, ajoutez et gérez vos enseignants.',
+            'majors-section': 'Organisez les filières de votre école.',
+            'subjects-section': 'Gérez les matières enseignées.',
+            'messages-section': 'Vos conversations récentes.',
+            'notifications-section': 'Vos dernières notifications.'
+        };
+
         const titleElement = document.querySelector('.page-title');
+        const subtitleElement = document.querySelector('.page-subtitle');
         if (titleElement) {
             titleElement.style.opacity = '0';
+            if (subtitleElement) subtitleElement.style.opacity = '0';
             setTimeout(() => {
                 titleElement.textContent = pageTitles[sectionId] || 'Tableau de Bord';
+                if (subtitleElement) {
+                    subtitleElement.textContent = pageSubtitles[sectionId] || '';
+                    subtitleElement.style.opacity = '1';
+                }
                 titleElement.style.opacity = '1';
             }, 150);
         }

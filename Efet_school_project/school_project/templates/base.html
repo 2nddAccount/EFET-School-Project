@@ -61,10 +61,11 @@
 
         /* Modern Responsive Navbar - Completely Redesigned */
         .navbar {
-            background: linear-gradient(135deg, #101d1a 0%, #152722 100%);
+            background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(20px);
             border: none;
-            box-shadow: 0 8px 32px rgba(14, 27, 24, 0.25);
+            border-bottom: 1px solid #e3e9f0;
+            box-shadow: 0 8px 32px rgba(18, 32, 46, 0.08);
             transition: all 0.3s ease;
             position: fixed;
             top: 0;
@@ -77,8 +78,8 @@
         }
 
         .navbar.scrolled {
-            background: linear-gradient(135deg, rgba(16, 29, 26, 0.96) 0%, rgba(21, 39, 34, 0.96) 100%);
-            box-shadow: 0 12px 40px rgba(14, 27, 24, 0.35);
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 12px 40px rgba(18, 32, 46, 0.12);
         }
 
         .navbar-content {
@@ -109,8 +110,9 @@
             height: 45px;
             border-radius: 50%;
             overflow: hidden;
-            background: linear-gradient(135deg, #0e7c66 0%, #0a5c4c 100%);
-            box-shadow: 0 4px 15px rgba(14, 124, 102, 0.4);
+            background: #e4eef9;
+            border: 1px solid #d3e3f4;
+            box-shadow: 0 4px 15px rgba(46, 111, 183, 0.18);
             transition: all 0.5s ease;
             display: flex;
             align-items: center;
@@ -129,14 +131,14 @@
         }
 
         .brand-text {
-            color: white;
+            color: #12202e;
         }
 
         .brand-title {
             font-size: 1.4rem;
             font-weight: 800;
             margin: 0;
-            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            background: linear-gradient(45deg, #1f4e86, #2e6fb7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -166,7 +168,7 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: #51637a;
             text-decoration: none;
             border-radius: 12px;
             font-weight: 500;
@@ -188,8 +190,8 @@
         }
 
         .nav-link:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.15);
+            color: #1f4e86;
+            background: #e4eef9;
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
@@ -199,8 +201,8 @@
         }
 
         .nav-link.active {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+            background: #e4eef9;
+            color: #1f4e86;
             font-weight: 600;
         }
 
@@ -282,7 +284,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #12a383, #0e7c66);
+            background: linear-gradient(45deg, #4f97d1, #2e6fb7);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -290,13 +292,13 @@
             font-weight: 700;
             font-size: 1rem;
             margin-left: 0.5rem;
-            box-shadow: 0 4px 15px rgba(14, 124, 102, 0.3);
+            box-shadow: 0 4px 15px rgba(46, 111, 183, 0.25);
             transition: all 0.3s ease;
         }
 
         .user-avatar:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(14, 124, 102, 0.4);
+            box-shadow: 0 6px 20px rgba(46, 111, 183, 0.3);
         }
         
         /* Dropdown Menu Styles */
@@ -340,7 +342,7 @@
         .mobile-menu-btn {
             background: none;
             border: none;
-            color: white;
+            color: #27394c;
             font-size: 1.5rem;
             cursor: pointer;
             padding: 0.5rem;
@@ -349,7 +351,7 @@
         }
 
         .mobile-menu-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: #e4eef9;
         }
 
         .mobile-menu {
@@ -358,7 +360,7 @@
             right: -100%;
             width: 300px;
             height: 100vh;
-            background: linear-gradient(135deg, #101d1a 0%, #152722 100%);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             transition: right 0.3s ease;
             z-index: 1001;
@@ -377,7 +379,7 @@
             align-items: center;
             margin-bottom: 1.5rem;
             padding-bottom: 0.75rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid #e3e9f0;
         }
 
         .mobile-close-btn {
@@ -503,7 +505,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(-45deg, #0e7c66, #d9a441, #12a383, #0a5c4c);
+            background: linear-gradient(-45deg, #2e6fb7, #d9a441, #4f97d1, #1f4e86);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
         }
@@ -547,7 +549,7 @@
         .btn-modern {
             position: relative;
             overflow: hidden;
-            background: linear-gradient(45deg, #0e7c66, #0a5c4c);
+            background: linear-gradient(45deg, #2e6fb7, #1f4e86);
             border: none;
             border-radius: 25px;
             padding: 12px 30px;
@@ -622,7 +624,7 @@
             pointer-events: none;
             opacity: 0.6;
             animation: float 6s ease-in-out infinite;
-            background: linear-gradient(45deg, #0e7c66, #0a5c4c);
+            background: linear-gradient(45deg, #2e6fb7, #1f4e86);
         }
 
         .particle::before {
@@ -769,7 +771,7 @@
             <!-- Brand -->
             <a href="{{ url_for('main.index') }}" class="navbar-brand">
                 <div class="brand-logo-container">
-                    <img src="/static/images/efet_logo_modern.svg" alt="EFET Logo" class="brand-logo"/>
+                    <img src="/static/images/efet_logo_official.png" alt="EFET Logo" class="brand-logo"/>
                 </div>
                 <div class="brand-text">
                     <h1 class="brand-title">EFET</h1>
@@ -891,7 +893,7 @@
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
             <a href="{{ url_for('main.index') }}" class="flex items-center">
-                <img src="/static/images/efet_logo_modern.svg" alt="EFET Logo" class="h-10 w-10 mr-3 rounded-full"/>
+                <img src="/static/images/efet_logo_official.png" alt="EFET Logo" class="h-10 w-10 mr-3 rounded-full"/>
                 <div>
                     <h1 class="text-xl font-bold text-white">EFET</h1>
                     <p class="text-xs text-white/80">École Française d'Enseignement Technique</p>
@@ -971,15 +973,15 @@
             </a>
             {% endif %}
             
-            <div class="mt-4 mb-2 border-t border-white/10 pt-4"></div>
+            <div class="mt-4 mb-2 border-t border-gray-200 pt-4"></div>
             
-            <div class="flex items-center space-x-3 px-4 py-3 bg-white/10 rounded-lg mb-4">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold">
+            <div class="flex items-center space-x-3 px-4 py-3 bg-gray-100 rounded-lg mb-4">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold">
                     {{ current_user.name[0].upper() if current_user.name else 'U' }}
                 </div>
                 <div>
-                    <div class="text-white font-medium">{{ current_user.name }}</div>
-                    <div class="text-xs text-white/70">{{ current_user.email }}</div>
+                    <div class="text-gray-900 font-medium">{{ current_user.name }}</div>
+                    <div class="text-xs text-gray-500">{{ current_user.email }}</div>
                 </div>
             </div>
             
@@ -1018,7 +1020,7 @@
                 <!-- University Info -->
                 <div class="col-span-2">
                     <div class="flex items-center space-x-3 mb-4">
-                        <img src="/static/images/efet_logo_modern.svg" alt="EFET Logo" class="h-12 w-12 rounded-full"/>
+                        <img src="/static/images/efet_logo_official.png" alt="EFET Logo" class="h-12 w-12 rounded-full"/>
                         <div>
                             <h3 class="font-poppins font-bold text-xl">EFET</h3>
                             <p class="text-gray-400 text-sm">École Française d'Enseignement Technique</p>
