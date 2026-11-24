@@ -7,6 +7,13 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 <!-- Mobile Dashboard Fixes -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard-mobile-fix.css') }}">
+<style>
+    /* Dashboard pages use the Atrium paper canvas, not the animated site background */
+    .animated-bg { display: none !important; }
+    body { background: #f4f1ea !important; }
+    /* The page-transition transform would trap fixed elements (sidebar, modals) inside <main> */
+    main.page-transition { animation: none !important; transform: none !important; opacity: 1 !important; }
+</style>
 {% endblock head %}
 
 {% block content %}

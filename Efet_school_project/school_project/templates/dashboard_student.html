@@ -2,6 +2,10 @@
 
 {% block head %}
 <style>
+    /* Use the Atrium paper canvas instead of the animated site background */
+    .animated-bg { display: none !important; }
+    body { background: #f4f1ea !important; }
+
     /* Additional Custom Styles for Student Dashboard */
     .student-dashboard {
         padding: 1.5rem;
@@ -9,11 +13,11 @@
     }
     
     .dashboard-header {
-        background: linear-gradient(135deg, #4f46e5 0%, #7e22ce 100%);
+        background: linear-gradient(135deg, #0e7c66 0%, #0a5c4c 100%);
         border-radius: 16px;
         padding: 2rem;
         margin-bottom: 2rem;
-        box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+        box-shadow: 0 10px 25px rgba(14, 124, 102, 0.2);
         position: relative;
         overflow: hidden;
         color: white;
@@ -99,11 +103,11 @@
     }
     
     .grades-icon {
-        background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+        background: linear-gradient(135deg, #8fc6b6 0%, #12a383 100%);
     }
     
     .messages-icon {
-        background: linear-gradient(135deg, #93c5fd 0%, #3b82f6 100%);
+        background: linear-gradient(135deg, #a7d9c9 0%, #0e7c66 100%);
     }
     
     .dashboard-sections {
@@ -239,7 +243,7 @@
     }
     
     .message-sender i {
-        color: #3b82f6;
+        color: #0e7c66;
     }
     
     .message-date {
@@ -282,8 +286,8 @@
     
     .form-control:focus {
         outline: none;
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        border-color: #0e7c66;
+        box-shadow: 0 0 0 3px rgba(14, 124, 102, 0.1);
     }
     
     .btn-view-grades {
@@ -293,7 +297,7 @@
         padding: 0.75rem 1.5rem;
         border-radius: 0.5rem;
         font-weight: 500;
-        background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+        background: linear-gradient(135deg, #8fc6b6 0%, #12a383 100%);
         color: white;
         transition: all 0.2s ease;
         border: none;
@@ -303,7 +307,7 @@
     
     .btn-view-grades:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        box-shadow: 0 4px 12px rgba(18, 163, 131, 0.3);
     }
     
     .btn-send {
@@ -314,7 +318,7 @@
         padding: 0.75rem 1.5rem;
         border-radius: 0.5rem;
         font-weight: 500;
-        background: linear-gradient(135deg, #93c5fd 0%, #3b82f6 100%);
+        background: linear-gradient(135deg, #a7d9c9 0%, #0e7c66 100%);
         color: white;
         transition: all 0.2s ease;
         border: none;
@@ -324,7 +328,7 @@
     
     .btn-send:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        box-shadow: 0 4px 12px rgba(14, 124, 102, 0.3);
     }
     
     /* Mobile Responsiveness */
