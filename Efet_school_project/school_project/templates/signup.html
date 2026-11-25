@@ -3,443 +3,90 @@
 {% block title %}Inscription - EFET{% endblock title %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
-<!-- Make sure Tailwind CSS is loaded correctly -->
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/campus-pages.css') }}">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
 {% endblock head %}
 
-{% block styles %}
-<!-- Add custom signup page styles -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
-{% endblock %}
-
 {% block content %}
-<section class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-    <!-- Animated Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50"></div>
-    
-    <!-- Floating Shapes -->
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute -top-40 -left-40 w-80 h-80 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
-        <div class="absolute top-40 right-40 w-60 h-60 bg-green-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style="animation-delay: 4s;"></div>
-    </div>
-    
-    <div class="max-w-md w-full space-y-8 relative z-10">
-        <!-- Header -->
-        <div class="text-center" data-aos="fade-down">
-            <div class="mx-auto h-20 w-20 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl transform hover:scale-110 transition-transform duration-500">
-                <i class="fas fa-user-plus text-white text-2xl"></i>
-            </div>
-            <h2 class="font-poppins font-bold text-3xl text-gray-900 mb-2">
-                Inscription
-            </h2>
-            <p class="text-gray-600">
-                Rejoignez la communauté EFET
-            </p>
+<div class="campus">
+<section class="auth-page">
+    <div class="auth-orb one"></div><div class="auth-orb two"></div>
+    <div class="auth-shell wide">
+        <div class="auth-head">
+            <div class="auth-logo"><img src="{{ url_for('static', filename='images/efet_logo_official.png') }}" alt="EFET"></div>
+            <h2>Inscription</h2>
+            <p>Rejoignez la communauté EFET</p>
         </div>
-
-        <!-- Signup Form -->
-        <div class="glass-card p-8" data-aos="fade-up" data-aos-delay="200">
+        <div class="auth-card">
             {% with messages = get_flashed_messages() %}
             {% if messages %}
-            <div class="mb-6 p-4 {% if 'réussie' in messages[0] %}bg-green-50 border-l-4 border-green-400{% else %}bg-red-50 border-l-4 border-red-400{% endif %} rounded-lg animate-fadeInUp">
-                <div class="flex">
-                    <div class="flex-shrink-0">
-                        {% if 'réussie' in messages[0] %}
-                        <i class="fas fa-check-circle text-green-400"></i>
-                        {% else %}
-                        <i class="fas fa-exclamation-triangle text-red-400"></i>
-                        {% endif %}
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm {% if 'réussie' in messages[0] %}text-green-700{% else %}text-red-700{% endif %}">
-                            {{ messages[0] }}
-                            {% if not 'réussie' in messages[0] and 'Veuillez vous inscrire' in messages[0] %}
-                            <br>
-                            <span class="text-gray-600 mt-1 block">Remplissez le formulaire ci-dessous pour créer un compte.</span>
-                            {% elif not 'réussie' in messages[0] %}
-                            <br>
-                            <a href="{{ url_for('auth.login') }}" class="underline hover:text-red-900 transition-colors duration-200">
-                                Aller à la page de connexion
-                            </a>
-                            {% endif %}
-                        </p>
-                    </div>
-                </div>
+            <div class="flash-box {% if 'réussie' in messages[0] %}ok{% else %}err{% endif %}">
+                {% if 'réussie' in messages[0] %}<i data-lucide="check-circle-2"></i>{% else %}<i data-lucide="alert-triangle"></i>{% endif %}
+                <span>
+                    {{ messages[0] }}
+                    {% if not 'réussie' in messages[0] and 'Veuillez vous inscrire' in messages[0] %}
+                    <br><small>Remplissez le formulaire ci-dessous pour créer un compte.</small>
+                    {% elif not 'réussie' in messages[0] %}
+                    <br><a href="{{ url_for('auth.login') }}" style="color:inherit;font-weight:700;">Aller à la page de connexion</a>
+                    {% endif %}
+                </span>
             </div>
             {% endif %}
             {% endwith %}
-
-            <!-- Welcome Animation -->
-            <div class="welcome-animation mb-6 hidden">
-                <div class="flex justify-center items-center space-x-2 mb-4">
-                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center animate-bounce shadow-lg">
-                        <i class="fas fa-check text-white text-xl checkmark-animation"></i>
-                    </div>
-                </div>
-                <h3 class="text-xl font-semibold text-center text-gray-800 mb-2 animate-fadeInUp">Bienvenue à EFET !</h3>
-                <p class="text-center text-gray-600 animate-fadeInUp" style="animation-delay: 0.2s;">Votre compte a été créé avec succès. Vous allez être redirigé...</p>
+            <div class="welcome-animation hidden">
+                <div class="ok-ring"><i data-lucide="check"></i></div>
+                <h3>Bienvenue à EFET !</h3>
+                <p>Votre compte a été créé avec succès. Vous allez être redirigé...</p>
             </div>
-
-            <form method="POST" action="/signup" class="space-y-6" id="signupForm">
-                <!-- Two Column Layout for Form Fields -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Left Column -->
-                    <div class="space-y-4">
-                        <!-- Email Field -->
-                        <div class="space-y-2 form-field form-field-animation opacity-0 animate-fadeInUp">
-                            <label for="email" class="block text-sm font-medium text-gray-700">
-                                Adresse Email <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fas fa-envelope text-gray-400"></i>
-                                </div>
-                                <input 
-                                    id="email"
-                                    name="email" 
-                                    type="email" 
-                                    required 
-                                    class="appearance-none relative block w-full pl-10 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm transition-all duration-300 hover:border-purple-400"
-                                    placeholder="votre.email@efet.ma"
-                                    autofocus
-                                >
-                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-                                    <i id="emailCheck" class="fas fa-check text-green-500 hidden"></i>
-                                </div>
-                            </div>
-                            <p id="emailError" class="text-xs text-red-600 hidden"></p>
-                        </div>
-
-                        <!-- Name Field -->
-                        <div class="space-y-2 form-field form-field-animation opacity-0 animate-fadeInUp">
-                            <label for="name" class="block text-sm font-medium text-gray-700">
-                                Nom Complet <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fas fa-user text-gray-400"></i>
-                                </div>
-                                <input 
-                                    id="name"
-                                    name="name" 
-                                    type="text" 
-                                    required 
-                                    class="appearance-none relative block w-full pl-10 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm transition-all duration-300 hover:border-purple-400"
-                                    placeholder="Votre nom complet"
-                                >
-                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-                                    <i id="nameCheck" class="fas fa-check text-green-500 hidden"></i>
-                                </div>
-                            </div>
-                            <p id="nameError" class="text-xs text-red-600 hidden"></p>
-                        </div>
-
-                        <!-- Password Field -->
-                        <div class="space-y-2 form-field form-field-animation opacity-0 animate-fadeInUp">
-                            <label for="password" class="block text-sm font-medium text-gray-700">
-                                Mot de Passe <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fas fa-lock text-gray-400"></i>
-                                </div>
-                                <input 
-                                    id="password"
-                                    name="password" 
-                                    type="password" 
-                                    required 
-                                    class="appearance-none relative block w-full pl-10 pr-10 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm transition-all duration-300 hover:border-purple-400"
-                                    placeholder="••••••••"
-                                    minlength="6"
-                                >
-                                <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center" onclick="togglePassword()">
-                                    <i id="passwordToggle" class="fas fa-eye-slash text-gray-400 hover:text-gray-600 transition-colors duration-200"></i>
-                                </button>
-                            </div>
-                            <div class="mt-2">
-                                <div class="flex space-x-1 mb-1">
-                                    <div id="strength1" class="h-1 w-1/4 bg-gray-200 rounded"></div>
-                                    <div id="strength2" class="h-1 w-1/4 bg-gray-200 rounded"></div>
-                                    <div id="strength3" class="h-1 w-1/4 bg-gray-200 rounded"></div>
-                                    <div id="strength4" class="h-1 w-1/4 bg-gray-200 rounded"></div>
-                                </div>
-                                <p id="passwordStrength" class="text-xs text-gray-500">Minimum 6 caractères</p>
-                            </div>
-                        </div>
-
-                        <!-- Confirm Password Field -->
-                        <div class="space-y-2 form-field form-field-animation opacity-0 animate-fadeInUp">
-                            <label for="confirmPassword" class="block text-sm font-medium text-gray-700">
-                                Confirmer le Mot de Passe <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fas fa-lock text-gray-400"></i>
-                                </div>
-                                <input 
-                                    id="confirmPassword"
-                                    name="confirmPassword" 
-                                    type="password" 
-                                    required 
-                                    class="appearance-none relative block w-full pl-10 pr-10 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm transition-all duration-300 hover:border-purple-400"
-                                    placeholder="••••••••"
-                                >
-                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-                                    <i id="confirmCheck" class="fas fa-check text-green-500 hidden"></i>
-                                </div>
-                            </div>
-                            <p id="confirmError" class="text-xs text-red-600 hidden"></p>
-                        </div>
-
-                        <!-- Phone Field -->
-                        <div class="space-y-2 form-field form-field-animation opacity-0 animate-fadeInUp">
-                            <label for="phone" class="block text-sm font-medium text-gray-700">
-                                Numéro de Téléphone
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fas fa-phone text-gray-400"></i>
-                                </div>
-                                <input 
-                                    id="phone"
-                                    name="phone" 
-                                    type="tel" 
-                                    class="appearance-none relative block w-full pl-10 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm transition-all duration-300 hover:border-purple-400"
-                                    placeholder="Votre numéro de téléphone"
-                                >
-                            </div>
-                        </div>
+            <form method="POST" action="/signup" id="signupForm">
+                <div class="form-grid">
+                    <div>
+<div class="field"><label for="email">Adresse Email <span class="req">*</span></label><div class="inwrap"><i data-lucide="mail" class="lead"></i><input id="email" name="email" type="email" required placeholder="votre.email@efet.ma" autofocus><i id="emailCheck" data-lucide="check-circle-2" class="chk hidden"></i></div><p id="emailError" class="msg hidden"></p></div>
+<div class="field"><label for="name">Nom Complet <span class="req">*</span></label><div class="inwrap"><i data-lucide="user" class="lead"></i><input id="name" name="name" type="text" required placeholder="Votre nom complet" ><i id="nameCheck" data-lucide="check-circle-2" class="chk hidden"></i></div><p id="nameError" class="msg hidden"></p></div>
+<div class="field"><label for="password">Mot de Passe <span class="req">*</span></label><div class="inwrap"><i data-lucide="lock" class="lead"></i><input id="password" name="password" type="password" required placeholder="••••••••" minlength="6"><button type="button" class="eye-btn" id="eyeBtn" onclick="togglePassword()" aria-label="Afficher le mot de passe"><i data-lucide="eye-off"></i></button></div><div><div class="sbars"><div id="strength1" class="sbar"></div><div id="strength2" class="sbar"></div><div id="strength3" class="sbar"></div><div id="strength4" class="sbar"></div></div><p id="passwordStrength" class="sbar-label">Minimum 6 caractères</p></div></div>
+<div class="field"><label for="confirmPassword">Confirmer le Mot de Passe <span class="req">*</span></label><div class="inwrap"><i data-lucide="lock-keyhole" class="lead"></i><input id="confirmPassword" name="confirmPassword" type="password" required placeholder="••••••••" ><i id="confirmCheck" data-lucide="check-circle-2" class="chk hidden"></i></div><p id="confirmError" class="msg hidden"></p></div>
+<div class="field"><label for="phone">Numéro de Téléphone</label><div class="inwrap"><i data-lucide="phone" class="lead"></i><input id="phone" name="phone" type="tel" placeholder="Votre numéro de téléphone" ></div></div>
                     </div>
-
-                    <!-- Right Column -->
-                    <div class="space-y-4">
-                        <!-- Age Field -->
-                        <div class="space-y-2 form-field form-field-animation opacity-0 animate-fadeInUp">
-                            <label for="age" class="block text-sm font-medium text-gray-700">
-                                Âge
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fas fa-birthday-cake text-gray-400"></i>
-                                </div>
-                                <input 
-                                    id="age"
-                                    name="age" 
-                                    type="number" 
-                                    min="16"
-                                    max="100"
-                                    class="appearance-none relative block w-full pl-10 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm transition-all duration-300 hover:border-purple-400"
-                                    placeholder="Votre âge"
-                                >
-                            </div>
-                        </div>
-
-                        <!-- Gender Field -->
-                        <div class="space-y-2 form-field form-field-animation opacity-0 animate-fadeInUp">
-                            <label for="gender" class="block text-sm font-medium text-gray-700">
-                                Genre
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fas fa-venus-mars text-gray-400"></i>
-                                </div>
-                                <select 
-                                    id="gender"
-                                    name="gender" 
-                                    class="appearance-none relative block w-full pl-10 pr-8 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm transition-all duration-300 hover:border-purple-400"
-                                >
-                                    <option value="male">Masculin</option>
-                                    <option value="female">Féminin</option>
-                                    <option value="other">Autre</option>
-                                </select>
-                                <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-                                    <i class="fas fa-chevron-down text-gray-400"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Address Field -->
-                        <div class="space-y-2 form-field form-field-animation opacity-0 animate-fadeInUp">
-                            <label for="address" class="block text-sm font-medium text-gray-700">
-                                Adresse
-                            </label>
-                            <div class="relative">
-                                <div class="absolute top-3 left-3 flex items-start pointer-events-none">
-                                    <i class="fas fa-map-marker-alt text-gray-400"></i>
-                                </div>
-                                <textarea 
-                                    id="address"
-                                    name="address" 
-                                    rows="3"
-                                    class="appearance-none relative block w-full pl-10 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm transition-all duration-300 hover:border-purple-400"
-                                    placeholder="Votre adresse complète"
-                                ></textarea>
-                            </div>
-                        </div>
-
-                        <!-- Major Field -->
-                        <div class="space-y-2 form-field form-field-animation opacity-0 animate-fadeInUp">
-                            <label for="major" class="block text-sm font-medium text-gray-700">
-                                Filière d'intérêt
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fas fa-graduation-cap text-gray-400"></i>
-                                </div>
-                                <select 
-                                    id="major"
-                                    name="major" 
-                                    class="appearance-none relative block w-full pl-10 pr-8 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm transition-all duration-300 hover:border-purple-400"
-                                >
-                                    <option value="">Sélectionnez une filière (optionnel)</option>
-                                    <option value="Informatique">Informatique</option>
-                                    <option value="Commerce">Commerce</option>
-                                    <option value="Finance">Finance et Comptabilité</option>
-                                    <option value="Management">Management</option>
-                                    <option value="Logistique">Logistique</option>
-                                    <option value="Santé">Santé</option>
-                                </select>
-                                <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-                                    <i class="fas fa-chevron-down text-gray-400"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- About Me Field -->
-                        <div class="space-y-2 form-field form-field-animation opacity-0 animate-fadeInUp">
-                            <label for="aboutMe" class="block text-sm font-medium text-gray-700">
-                                À propos de moi
-                            </label>
-                            <div class="relative">
-                                <div class="absolute top-3 left-3 flex items-start pointer-events-none">
-                                    <i class="fas fa-comment text-gray-400"></i>
-                                </div>
-                                <textarea 
-                                    id="aboutMe"
-                                    name="aboutMe" 
-                                    rows="2"
-                                    class="appearance-none relative block w-full pl-10 pr-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm transition-all duration-300 hover:border-purple-400"
-                                    placeholder="Parlez-nous un peu de vous (optionnel)"
-                                ></textarea>
-                            </div>
-                        </div>
+                    <div>
+<div class="field"><label for="age">Âge</label><div class="inwrap"><i data-lucide="cake" class="lead"></i><input id="age" name="age" type="number" placeholder="Votre âge" min="16" max="100"></div></div>
+<div class="field"><label for="gender">Genre</label><div class="inwrap"><i data-lucide="users" class="lead"></i><select id="gender" name="gender"><option value="male">Masculin</option><option value="female">Féminin</option><option value="other">Autre</option></select><i data-lucide="chevron-down" class="caret"></i></div></div>
+<div class="field"><label for="address">Adresse</label><div class="inwrap ta"><i data-lucide="map-pin" class="lead"></i><textarea id="address" name="address" rows="2" placeholder="Votre adresse complète"></textarea></div></div>
+<div class="field"><label for="major">Filière d'intérêt</label><div class="inwrap"><i data-lucide="graduation-cap" class="lead"></i><select id="major" name="major"><option value="">Sélectionnez une filière (optionnel)</option><option value="Informatique">Informatique</option><option value="Commerce">Commerce</option><option value="Finance">Finance et Comptabilité</option><option value="Management">Management</option><option value="Logistique">Logistique</option><option value="Santé">Santé</option></select><i data-lucide="chevron-down" class="caret"></i></div></div>
+<div class="field"><label for="aboutMe">À propos de moi</label><div class="inwrap ta"><i data-lucide="message-square" class="lead"></i><textarea id="aboutMe" name="aboutMe" rows="2" placeholder="Parlez-nous un peu de vous (optionnel)"></textarea></div></div>
                     </div>
                 </div>
-
-                <!-- Terms and Conditions -->
-                <div class="flex items-start">
-                    <div class="flex items-center h-5">
-                        <input 
-                            id="terms" 
-                            name="terms" 
-                            type="checkbox" 
-                            required
-                            class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded transition-colors duration-200"
-                        >
-                    </div>
-                    <div class="ml-3 text-sm">
-                        <label for="terms" class="text-gray-700">
-                            J'accepte les 
-                            <a href="#" class="text-purple-600 hover:text-purple-500 transition-colors duration-200">
-                                termes et conditions
-                            </a>
-                            et la 
-                            <a href="#" class="text-purple-600 hover:text-purple-500 transition-colors duration-200">
-                                politique de confidentialité
-                            </a>
-                        </label>
-                    </div>
+                <div class="terms-row">
+                    <input id="terms" name="terms" type="checkbox" required>
+                    <label for="terms">J'accepte les <a href="#">termes et conditions</a> et la <a href="#">politique de confidentialité</a></label>
                 </div>
-
-                <!-- Submit Button -->
-                <div>
-                    <button 
-                        type="submit" 
-                        id="submitBtn"
-                        class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none pulse-on-hover"
-                    >
-                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                            <i class="fas fa-user-plus group-hover:text-purple-300 transition-colors duration-200"></i>
-                        </span>
-                        <span id="submitText">Créer mon Compte</span>
-                        <i id="submitSpinner" class="fas fa-spinner fa-spin hidden ml-2"></i>
-                    </button>
-                </div>
-
-                <!-- Divider -->
-                <div class="mt-6">
-                    <div class="relative">
-                        <div class="absolute inset-0 flex items-center">
-                            <div class="w-full border-t border-gray-300"></div>
-                        </div>
-                        <div class="relative flex justify-center text-sm">
-                            <span class="px-2 bg-white text-gray-500">ou</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Login Link -->
-                <div class="text-center">
-                    <p class="text-sm text-gray-600">
-                        Vous avez déjà un compte ?
-                        <a href="{{ url_for('auth.login') }}" class="font-medium text-purple-600 hover:text-purple-500 transition-colors duration-200">
-                            Se connecter
-                        </a>
-                    </p>
-                </div>
+                <button type="submit" id="submitBtn" class="auth-submit"><i data-lucide="user-plus"></i><span id="submitText">Créer mon Compte</span><i id="submitSpinner" data-lucide="loader-2" class="spin hidden"></i></button>
+                <div class="auth-divider">ou</div>
+                <p class="auth-alt">Vous avez déjà un compte ? <a href="{{ url_for('auth.login') }}">Se connecter</a></p>
             </form>
         </div>
-
-        <!-- Benefits -->
-        <div class="glass-card p-6 text-center animate-on-scroll opacity-0" data-aos="fade-up" data-aos-delay="400">
-            <h3 class="font-semibold text-gray-800 mb-4">Pourquoi rejoindre EFET ?</h3>
-            <div class="grid grid-cols-2 gap-4 text-sm">
-                <div class="text-center p-2 hover:bg-white hover:bg-opacity-50 rounded-lg transition-all duration-300 benefit-card">
-                    <i class="fas fa-graduation-cap text-blue-500 text-xl mb-2"></i>
-                    <p class="text-gray-600">Formation d'Excellence</p>
-                </div>
-                <div class="text-center p-2 hover:bg-white hover:bg-opacity-50 rounded-lg transition-all duration-300 benefit-card">
-                    <i class="fas fa-users text-green-500 text-xl mb-2"></i>
-                    <p class="text-gray-600">Communauté Active</p>
-                </div>
-                <div class="text-center p-2 hover:bg-white hover:bg-opacity-50 rounded-lg transition-all duration-300 benefit-card">
-                    <i class="fas fa-certificate text-purple-500 text-xl mb-2"></i>
-                    <p class="text-gray-600">Certifications Reconnues</p>
-                </div>
-                <div class="text-center p-2 hover:bg-white hover:bg-opacity-50 rounded-lg transition-all duration-300 benefit-card">
-                    <i class="fas fa-briefcase text-red-500 text-xl mb-2"></i>
-                    <p class="text-gray-600">Insertion Professionnelle</p>
-                </div>
-                <div class="text-center p-2 hover:bg-white hover:bg-opacity-50 rounded-lg transition-all duration-300 benefit-card">
-                    <i class="fas fa-globe text-indigo-500 text-xl mb-2"></i>
-                    <p class="text-gray-600">Réseau International</p>
-                </div>
-                <div class="text-center p-2 hover:bg-white hover:bg-opacity-50 rounded-lg transition-all duration-300 benefit-card">
-                    <i class="fas fa-laptop-code text-yellow-500 text-xl mb-2"></i>
-                    <p class="text-gray-600">Équipements Modernes</p>
-                </div>
-            </div>
+        <h3 class="benefits-title">Pourquoi rejoindre EFET ?</h3>
+        <div class="benefits" style="margin-top:0.9rem">
+            <div class="benefit"><i data-lucide="graduation-cap"></i>Formation d'Excellence</div>
+            <div class="benefit"><i data-lucide="users"></i>Communauté Active</div>
+            <div class="benefit"><i data-lucide="award"></i>Certifications Reconnues</div>
+            <div class="benefit"><i data-lucide="briefcase"></i>Insertion Professionnelle</div>
+            <div class="benefit"><i data-lucide="globe"></i>Réseau International</div>
+            <div class="benefit"><i data-lucide="laptop"></i>Équipements Modernes</div>
         </div>
     </div>
 </section>
-
+</div>
 <script>
     // Toggle password visibility
     function togglePassword() {
         const passwordField = document.getElementById('password');
-        const toggleIcon = document.getElementById('passwordToggle');
-        
-        if (passwordField.type === 'password') {
-            passwordField.type = 'text';
-            toggleIcon.classList.remove('fa-eye-slash');
-            toggleIcon.classList.add('fa-eye');
-        } else {
-            passwordField.type = 'password';
-            toggleIcon.classList.remove('fa-eye');
-            toggleIcon.classList.add('fa-eye-slash');
-        }
+        const show = passwordField.type === 'password';
+        passwordField.type = show ? 'text' : 'password';
+        document.getElementById('eyeBtn').innerHTML = '<i data-lucide="' + (show ? 'eye' : 'eye-off') + '"></i>';
+        lucide.createIcons();
     }
 
     // Password strength checker
@@ -449,7 +96,7 @@
         
         // Reset all indicators
         indicators.forEach(id => {
-            document.getElementById(id).className = 'h-1 w-1/4 bg-gray-200 rounded';
+            document.getElementById(id).className = 'sbar';
         });
         
         if (password.length >= 6) strength++;
@@ -462,11 +109,11 @@
         const labels = ['Très faible', 'Faible', 'Moyen', 'Fort', 'Très fort'];
         
         for (let i = 0; i < Math.min(strength, 4); i++) {
-            document.getElementById(indicators[i]).className = `h-1 w-1/4 ${colors[Math.min(strength - 1, 3)]} rounded`;
+            document.getElementById(indicators[i]).className = `sbar ${colors[Math.min(strength - 1, 3)]}`;
         }
         
         document.getElementById('passwordStrength').textContent = labels[Math.min(strength, 4)];
-        document.getElementById('passwordStrength').className = `text-xs ${strength < 2 ? 'text-red-500' : strength < 3 ? 'text-yellow-500' : 'text-green-500'}`;
+        document.getElementById('passwordStrength').className = `sbar-label ${strength < 2 ? 'text-red-500' : strength < 3 ? 'text-yellow-500' : 'text-green-500'}`;
         
         return strength >= 2;
     }
@@ -490,6 +137,7 @@
 
     // Form validation
     document.addEventListener('DOMContentLoaded', function() {
+        lucide.createIcons();
         const form = document.getElementById('signupForm');
         const emailField = document.getElementById('email');
         const nameField = document.getElementById('name');
