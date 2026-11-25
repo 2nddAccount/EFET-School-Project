@@ -2,8 +2,12 @@
 
 {% block title %}Mon Profil - EFET{% endblock title %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/campus-profile.css') }}">
+{% endblock head %}
+
 {% block content %}
-<div class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-8">
+<div class="campus-profile min-h-screen py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header -->
         <div class="text-center mb-8" data-aos="fade-down">
