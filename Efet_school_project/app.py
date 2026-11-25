@@ -40,6 +40,9 @@ def internal_error(error):
 
 @app.errorhandler(Exception)
 def handle_exception(e):
+    from werkzeug.exceptions import HTTPException
+    if isinstance(e, HTTPException):
+        return e
     logger.error(f"Unhandled exception: {e}")
     return f"An error occurred: {str(e)}", 500
 

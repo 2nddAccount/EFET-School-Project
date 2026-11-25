@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>{% block title %}EFET - École Française d'Enseignement Technique{% endblock title %}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/efet_logo_official.png') }}">
     
     <!-- Modern CSS Framework -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -255,6 +256,18 @@
             background: rgba(255, 255, 255, 0.2);
             border-color: rgba(255, 255, 255, 0.5);
             transform: translateY(-2px);
+        }
+
+        /* Light navbar: the sign-up button must stay visible */
+        .navbar .btn-secondary, .mobile-nav .btn-secondary {
+            background: linear-gradient(135deg, #2e6fb7, #1f4e86);
+            border-color: transparent;
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(31, 78, 134, 0.28);
+        }
+        .navbar .btn-secondary:hover, .mobile-nav .btn-secondary:hover {
+            background: linear-gradient(135deg, #3a7cc5, #245a9a);
+            border-color: transparent;
         }
 
         .notification-badge {
@@ -1279,24 +1292,6 @@
                 }
             });
         }
-
-        // Floating Particles
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.background = `hsl(${Math.random() * 360}, 70%, 70%)`;
-            particle.style.width = particle.style.height = Math.random() * 10 + 5 + 'px';
-            particle.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.body.appendChild(particle);
-
-            setTimeout(() => {
-                particle.remove();
-            }, 6000);
-        }
-
-        // Create particles periodically
-        setInterval(createParticle, 2000);
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
